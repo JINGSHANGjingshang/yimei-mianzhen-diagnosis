@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#246BCE">
+  <title>医美医生面诊能力诊断</title>
+  <style>
+    :root{--ink:#17243a;--green:#246bce;--green2:#174f9d;--paper:#f2f6fc;--card:#fff;--red:#246bce;--gold:#84aef0;--line:rgba(36,107,206,.16);--muted:#66758b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-family:"Noto Serif SC","Songti SC","STSong",serif;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E")}
+    button{font:inherit}.shell{width:min(100%,720px);margin:auto;min-height:100vh;position:relative}.topline{height:5px;background:linear-gradient(90deg,#246bce 0 72%,#84aef0 72%)}
+    header{padding:22px 22px 14px;display:flex;align-items:center;justify-content:space-between}.brand{font-family:"FZKai-Z03","KaiTi",serif;font-weight:700;letter-spacing:.12em}.edition{font:11px/1.2 Georgia,serif;letter-spacing:.18em;color:var(--muted)}
+    main{padding:0 18px 52px}.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:0 18px 50px rgba(36,107,206,.09);border-radius:6px;padding:28px 22px;position:relative;overflow:hidden}.panel:after{content:"诊";position:absolute;right:-14px;top:-30px;color:rgba(36,107,206,.04);font-size:160px;line-height:1;font-weight:900;pointer-events:none}
+    .kicker{display:flex;align-items:center;gap:10px;color:var(--red);font-size:12px;font-weight:700;letter-spacing:.15em}.kicker:before{content:"";width:26px;height:1px;background:var(--red)}
+    h1{font-size:clamp(34px,9vw,56px);line-height:1.08;letter-spacing:-.035em;margin:18px 0 14px;max-width:560px}.lead{font-size:16px;line-height:1.9;color:#4d5d57;margin:0 0 25px;max-width:540px}
+    .dimensions{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:24px 0}.dim{padding-top:11px;font-size:13px;text-align:center;position:relative}.dim:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--green)}.dim:after{content:"";position:absolute;right:-1px;top:-4px;width:9px;height:9px;border-top:2px solid var(--green);border-right:2px solid var(--green);transform:rotate(45deg)}.meta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 28px}.tag{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:7px 11px;color:var(--muted)}
+    .primary,.secondary{width:100%;border:0;cursor:pointer;padding:15px 18px;border-radius:3px;font-weight:700;letter-spacing:.08em;transition:.2s}.primary{background:var(--green);color:#fff;box-shadow:0 8px 22px rgba(36,107,206,.22)}.primary:hover{background:#174f9d;transform:translateY(-1px)}.primary:disabled{opacity:.45;cursor:not-allowed;transform:none}.secondary{background:transparent;color:var(--green);border:1px solid var(--green);margin-top:10px}
+    .progress-wrap{position:sticky;top:0;background:rgba(242,246,252,.94);backdrop-filter:blur(8px);z-index:5;padding:14px 0}.progress-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px}.track{height:4px;background:rgba(36,107,206,.12);overflow:hidden}.bar{height:100%;width:0;background:var(--red);transition:width .35s ease}
+    .question{background:var(--card);border:1px solid var(--line);padding:21px 18px;margin:11px 0;box-shadow:0 7px 24px rgba(45,57,51,.045)}.qhead{display:flex;gap:12px;align-items:flex-start}.num{font:italic 16px Georgia,serif;color:var(--red);min-width:28px}.qtext{font-size:16px;line-height:1.65;font-weight:700}.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:18px}.choice input{position:absolute;opacity:0}.choice label{display:flex;height:42px;align-items:center;justify-content:center;border:1px solid var(--line);cursor:pointer;color:var(--muted);background:#fff;transition:.18s;font-family:Georgia,serif}.choice input:checked+label{background:var(--green);border-color:var(--green);color:#fff;transform:translateY(-2px);box-shadow:0 5px 12px rgba(23,63,53,.15)}.scale-labels{display:flex;justify-content:space-between;font-size:11px;color:#87908c;margin-top:7px}.submit-zone{padding:22px 0}.hint{text-align:center;color:var(--red);font-size:12px;min-height:18px;margin-top:9px}
+    .result-hero{text-align:center}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--red);font-weight:700}.total{font:74px/1 Georgia,serif;margin:14px 0 5px}.outof{font-size:13px;color:var(--muted)}.level{font-size:23px;margin:16px 0 8px}.level-note{line-height:1.8;color:var(--muted);margin:0 auto 24px;max-width:520px}
+    .chart-wrap{display:grid;place-items:center;margin:8px auto 28px;max-width:390px}.chart-wrap svg{width:100%;height:auto;overflow:visible}.gridline{fill:none;stroke:rgba(36,107,206,.15);stroke-width:1}.axis{stroke:rgba(36,107,206,.14);stroke-width:1}.data-poly{fill:rgba(36,107,206,.18);stroke:var(--red);stroke-width:2.5;stroke-linejoin:round;filter:drop-shadow(0 4px 6px rgba(36,107,206,.18))}.dot{fill:var(--red)}.chart-label{fill:var(--ink);font-size:12px;font-weight:700}.chart-score{fill:var(--red);font-size:11px;font-family:Georgia,serif}
+    .score-list{display:grid;gap:8px;margin:0 0 24px}.score-cell{display:grid;grid-template-columns:55px 58px 1fr;align-items:center;gap:8px;padding:12px 13px;text-align:left;border:1px solid var(--line);background:#f8fbff}.score-name{font-size:14px;font-weight:700}.score-num{font:19px Georgia,serif;color:var(--green)}.score-state{font-size:12px;color:var(--muted);line-height:1.5}
+    .diagnosis{background:#edf5ff;border-left:4px solid var(--green);padding:21px 18px;margin:20px 0}.diagnosis small{color:var(--red);font-weight:700;letter-spacing:.08em}.diagnosis h2{font-size:23px;margin:10px 0}.diagnosis p{font-size:15px;line-height:1.9;margin:0;color:#41546e}.advice{margin-top:14px!important;font-weight:700;color:var(--green)!important}.secondary-weak{margin-top:15px!important;padding-top:15px;border-top:1px solid var(--line);font-size:14px!important}
+    .save-btn{margin:0 0 12px}.card-preview{margin:0 0 18px;padding:16px;background:#e7f0fd;border:1px solid var(--line);text-align:center}.card-preview p{margin:0 0 12px;color:var(--green);font-weight:700;font-size:14px}.card-preview img{display:block;width:100%;height:auto;box-shadow:0 10px 30px rgba(36,107,206,.14);touch-action:auto;-webkit-touch-callout:default}.cta{margin-top:22px;background:#edf5ff;border:1px solid var(--line);color:var(--ink);padding:25px 20px;position:relative;overflow:hidden}.cta:before{content:"14";position:absolute;right:-6px;bottom:-33px;font:120px Georgia,serif;color:rgba(36,107,206,.06)}.cta h2{font-size:24px;margin:13px 0 10px}.cta p{line-height:1.8;color:var(--muted);font-size:14px;max-width:510px}.cta-link{display:block;margin-top:18px;background:var(--green);color:#fff;padding:14px;text-align:center;text-decoration:none;font-weight:700;letter-spacing:.03em;position:relative}.wechat{margin-top:12px;padding:20px;background:#fff;border:1px solid var(--line);text-align:center}.wechat img{display:block;width:min(100%,320px);margin:12px auto;border-radius:6px}.wechat h3{margin:0 0 8px}.wechat p{margin:5px auto!important;max-width:430px}.steps{text-align:left;background:#f8fbff;padding:13px 16px;margin-top:14px!important}.course-note{border-top:1px solid var(--line);margin-top:18px!important;padding-top:15px}.privacy{text-align:center;font-size:11px;color:#86918c;margin-top:18px}.hidden{display:none!important}.fade{animation:rise .55s both}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    @media(max-width:420px){header{padding-inline:18px}.panel{padding:24px 17px}.dimensions{gap:2px}.dim{font-size:12px}.question{padding-inline:14px}.score-cell{grid-template-columns:46px 54px 1fr}.chart-label{font-size:11px}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topline"></div>
+    <header><div class="brand">景上医美AI × 人间有庆</div><div class="edition">ASSESSMENT · 01</div></header>
+    <main>
+      <section id="intro" class="panel fade">
+        <div class="kicker">医美医生专业能力自测</div>
+        <h1>你的面诊，<br>卡在哪一步？</h1>
+        <p class="lead">用 15 个真实面诊情境，看清你在“看人、判断、表达、推进、主导”五个环节中的优势与短板。请按真实状态作答，而不是理想中的自己。</p>
+        <div class="dimensions"><div class="dim">看人</div><div class="dim">判断</div><div class="dim">表达</div><div class="dim">推进</div><div class="dim">主导</div></div>
+        <div class="meta"><span class="tag">约 3 分钟</span><span class="tag">15 道单选</span><span class="tag">结果即时生成</span></div>
+        <button class="primary" id="startBtn">开始诊断</button>
+        <div class="privacy">本测试仅用于个人能力复盘，不构成医学或职业资格评价</div>
+      </section>
+      <section id="quiz" class="hidden">
+        <div class="progress-wrap"><div class="progress-row"><span id="progressText">已完成 0 / 15</span><span id="percentText">0%</span></div><div class="track"><div class="bar" id="bar"></div></div></div>
+        <form id="quizForm"></form>
+        <div class="submit-zone"><button class="primary" id="submitBtn" type="button" disabled>生成我的诊断报告</button><div class="hint" id="hint"></div></div>
+      </section>
+      <section id="result" class="hidden panel fade" aria-live="polite">
+        <div class="result-hero"><div class="eyebrow">你的面诊能力总分</div><div class="total" id="totalScore">—</div><div class="outof">满分 75</div><div class="level" id="level"></div><p class="level-note" id="levelNote"></p></div>
+        <div class="chart-wrap" id="chart"></div><div class="score-list" id="scoreList"></div>
+        <div class="diagnosis"><small>你最需要先突破的是：<span id="weakName"></span></small><h2 id="diagTitle"></h2><p id="diagText"></p><p class="advice" id="diagAdvice"></p><p class="secondary-weak" id="secondaryWeak"></p></div>
+        <button class="primary save-btn" id="saveBtn">生成可保存的诊断结果卡</button>
+        <div class="card-preview hidden" id="cardPreviewWrap"><p>结果卡已生成，请长按下方图片保存</p><img id="cardPreview" alt="我的医美医生面诊能力诊断结果卡"></div>
+        <div class="cta"><div class="kicker">想知道自己为什么卡在这里？</div><h2>添加「人间有庆」，领取进一步诊断</h2><p>把诊断结果卡发给我。我会结合你的真实面诊情况，帮你判断具体卡在哪里，以及接下来最应该先练什么。</p><a class="cta-link" href="#wechatPanel" id="ctaLink">查看我的个人微信二维码 →</a><div class="wechat hidden" id="wechatPanel"><h3>添加「人间有庆」个人微信</h3><p>微信显示名称：灵桓</p><img id="qrImage" src="人间有庆-个人微信二维码.jpg" alt="人间有庆个人微信二维码"><p class="steps">① 保存上方诊断结果卡<br>② 长按识别二维码添加微信<br>③ 把结果卡发给我，领取进一步诊断</p></div><p class="course-note">如果你希望把低分能力真正练成稳定能力，提高自己的业绩，可以进一步了解14天「医美医生面诊能力集训」。</p></div>
+        <button class="secondary" id="restartBtn">重新测试</button>
+        <div class="privacy">你的答案仅在当前设备中计算，不会上传</div>
+      </section>
+    </main>
+  </div>
+  <script>
+  (()=>{
+    const dimensions=['看人','判断','表达','推进','主导'];
+    const questions=[
+      ['看人','面诊开始的几分钟内，我能判断求美者真正关注的是外貌问题、情绪焦虑，还是关系期待。'],
+      ['看人','当求美者说“我就随便问问”时，我能通过追问识别她真实的顾虑与意愿。'],
+      ['看人','我能根据对方的表达方式与反应，及时调整沟通节奏，而不是照固定流程讲。'],
+      ['判断','面对求美者提出的多个需求，我能迅速判断她最在意的问题，以及最值得优先处理的问题。'],
+      ['判断','我给出的方案有清晰的医学依据，不会轻易被流行项目或顾客指定项目带偏。'],
+      ['判断','面对不适合治疗或期待不现实的求美者，我能明确判断并说明边界。'],
+      ['表达','我能把专业判断转化成求美者听得懂、记得住的语言。'],
+      ['表达','我讲解方案时，能让求美者真正听懂“为什么这样做、能带来什么改善”，而不是听完很多信息，离开诊室后却记不住核心结论。'],
+      ['表达','即使对方信息很多或不断打断，我也能让沟通始终围绕一个清晰重点。'],
+      ['推进','求美者认可方案但迟迟不决定时，我能识别真正阻碍她行动的顾虑。'],
+      ['推进','谈到价格、风险或恢复期时，我能自然回应，并推动对方进入下一步。'],
+      ['推进','我能在不施压的前提下，清楚地邀请求美者做出决定或约定后续行动。'],
+      ['主导','面诊过程中，我能掌握结构和节奏，不会被对方零散的问题牵着走。'],
+      ['主导','当求美者提出不合理要求时，我能坚定又不冒犯地把讨论拉回专业方案。'],
+      ['主导','我能让求美者感受到：我是在为她规划长期、整体的面部改善路径，而不只是推荐当下适合的项目。']
+    ];
+    const diagnosis={
+      '看人':{title:'你需要先读懂“人”，再解决“脸”',text:'你可能很快进入专业判断，却还没完全识别对方真正想解决的问题。结果是方案没错，但没有击中她心里的那件事，信任建立得慢。',advice:'训练重点：需求分层、情绪识别、关键追问。'},
+      '判断':{title:'你的信息很多，但结论还不够锋利',text:'你可能能看见许多问题，却不容易快速排出优先级。求美者听到的是多个项目，而不是一个值得相信的核心判断。',advice:'训练重点：核心矛盾定位、方案取舍、边界判断。'},
+      '表达':{title:'你的专业，还没有被充分感知',text:'你知道为什么这样做，但对方未必真正听懂。专业词汇、信息密度或缺少结构，会让正确的判断失去说服力。',advice:'训练重点：结论先行、通俗转译、证据表达。'},
+      '推进':{title:'你能讲清方案，却容易停在“再考虑”',text:'面诊的前半段可能很顺，但来到价格、风险或决策时，你会把主动权完全交回去。不是催单不够，而是顾虑没有被准确拆开。',advice:'训练重点：顾虑定位、价值锚定、下一步邀请。'},
+      '主导':{title:'你很尊重对方，但面诊节奏正在失控',text:'你可能习惯逐个回答问题，却缺少一条贯穿面诊的主线。对方得到许多答案，仍然不知道该相信什么、先做什么。',advice:'训练重点：开场定框、节奏控制、专业边界。'}
+    };
+    const $=id=>document.getElementById(id), form=$('quizForm');
+    let lastResult=null;
+    questions.forEach((q,i)=>{
+      const el=document.createElement('article'); el.className='question';
+      el.innerHTML=`<div class="qhead"><span class="num">${String(i+1).padStart(2,'0')}</span><div class="qtext">${q[1]}</div></div><div class="scale">${[1,2,3,4,5].map(v=>`<span class="choice"><input type="radio" name="q${i}" id="q${i}-${v}" value="${v}"><label for="q${i}-${v}">${v}</label></span>`).join('')}</div><div class="scale-labels"><span>非常不符合</span><span>非常符合</span></div>`;
+      form.appendChild(el);
+    });
+    function progress(){const n=form.querySelectorAll('input:checked').length,p=Math.round(n/questions.length*100);$('progressText').textContent=`已完成 ${n} / ${questions.length}`;$('percentText').textContent=p+'%';$('bar').style.width=p+'%';$('submitBtn').disabled=n<questions.length;$('hint').textContent=n<questions.length&&n>0?`还有 ${questions.length-n} 题`:'。';if(n===questions.length)$('hint').textContent='已完成，可以生成报告';}
+    form.addEventListener('change',progress);
+    $('startBtn').onclick=()=>{$('intro').classList.add('hidden');$('quiz').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})};
+    function point(cx,cy,r,idx,n=5){const a=-Math.PI/2+idx*2*Math.PI/n;return [cx+Math.cos(a)*r,cy+Math.sin(a)*r]}
+    function chart(scores){const cx=180,cy=175,R=112;let grids='';for(let l=1;l<=5;l++)grids+=`<polygon class="gridline" points="${dimensions.map((_,i)=>point(cx,cy,R*l/5,i).join(',')).join(' ')}"/>`;const axes=dimensions.map((_,i)=>{const p=point(cx,cy,R,i);return `<line class="axis" x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}"/>`}).join('');const data=dimensions.map((d,i)=>point(cx,cy,R*scores[d]/15,i).join(',')).join(' ');const dots=dimensions.map((d,i)=>{const p=point(cx,cy,R*scores[d]/15,i);return `<circle class="dot" cx="${p[0]}" cy="${p[1]}" r="3.5"/>`}).join('');const labels=dimensions.map((d,i)=>{const p=point(cx,cy,R+32,i);const anchor=p[0]<cx-10?'end':p[0]>cx+10?'start':'middle';return `<text class="chart-label" text-anchor="${anchor}" x="${p[0]}" y="${p[1]}">${d}</text><text class="chart-score" text-anchor="${anchor}" x="${p[0]}" y="${p[1]+15}">${scores[d]}/15</text>`}).join('');return `<svg viewBox="0 0 360 350" role="img" aria-label="五维能力雷达图">${grids}${axes}<polygon class="data-poly" points="${data}"/>${dots}${labels}</svg>`}
+    $('submitBtn').onclick=()=>{
+      const checked=[...form.querySelectorAll('input:checked')];if(checked.length<questions.length)return;
+      const scores=Object.fromEntries(dimensions.map(d=>[d,0]));checked.forEach((input,i)=>scores[questions[i][0]]+=Number(input.value));const total=Object.values(scores).reduce((a,b)=>a+b,0);const ranked=[...dimensions].sort((a,b)=>scores[a]-scores[b]);const weak=ranked[0],second=ranked[1],d=diagnosis[weak];
+      let level,note;if(total>=65){level='成熟型面诊者';note='你的面诊结构已经相对完整。下一阶段不是补基础，而是把优势固化，并集中突破最低维度。'}else if(total>=52){level='稳进型面诊者';note='你已具备可靠基础，但能力链条中仍有一处容易让信任或决策中断。补齐短板，整体表现会明显跃升。'}else if(total>=38){level='成长型面诊者';note='你的专业能力正在形成，但还依赖临场发挥。建立稳定的面诊结构，会比继续积累零散话术更有效。'}else{level='起步型面诊者';note='你目前需要的不是更多话术，而是一套从识别需求到推动行动的完整面诊路径。'}
+      const state=n=>n>=12?'这个能力做得比较稳':n>=9?'这个能力能做到，但有时不稳定':'这个能力很可能正在拖面诊效果的后腿';
+      $('totalScore').textContent=total;$('level').textContent=level;$('levelNote').textContent=note;$('chart').innerHTML=chart(scores);$('scoreList').innerHTML=dimensions.map(x=>`<div class="score-cell"><div class="score-name">${x}</div><div class="score-num">${scores[x]}/15</div><div class="score-state">${state(scores[x])}</div></div>`).join('');$('weakName').textContent=weak;$('diagTitle').textContent=d.title;$('diagText').textContent=d.text;$('diagAdvice').textContent=d.advice;$('secondaryWeak').textContent=`${scores[second]===scores[weak]?'同样需要关注':'第二个需要关注'}：${second}（${scores[second]}/15分）。${state(scores[second])}。`;
+      lastResult={scores,total,level,note,weak,second,diagnosis:d};
+      $('quiz').classList.add('hidden');$('result').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});
+    };
+    function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines=99){let line='',lines=0;for(const c of text){if(ctx.measureText(line+c).width>maxWidth&&line){ctx.fillText(line,x,y);line=c;y+=lineHeight;if(++lines>=maxLines-1)break}else line+=c}if(line&&lines<maxLines)ctx.fillText(line,x,y);return y}
+    $('saveBtn').onclick=()=>{
+      if(!lastResult)return;const r=lastResult,c=document.createElement('canvas'),ctx=c.getContext('2d');c.width=1080;c.height=1440;ctx.fillStyle='#f2f6fc';ctx.fillRect(0,0,c.width,c.height);ctx.fillStyle='#246bce';ctx.fillRect(0,0,c.width,18);ctx.fillStyle='#17243a';ctx.font='700 34px serif';ctx.fillText('景上医美AI × 人间有庆',70,88);ctx.fillStyle='#246bce';ctx.font='700 26px serif';ctx.fillText('医美医生面诊能力诊断',70,158);ctx.fillStyle='#17243a';ctx.font='700 112px Georgia,serif';ctx.fillText(String(r.total),70,290);ctx.fillStyle='#66758b';ctx.font='28px serif';ctx.fillText('/ 75分　'+r.level,250,278);
+      ctx.fillStyle='#fff';ctx.fillRect(55,350,970,420);dimensions.forEach((d,i)=>{const y=420+i*66;ctx.fillStyle='#17243a';ctx.font='700 28px serif';ctx.fillText(d,90,y);ctx.fillStyle='#dce9fa';ctx.fillRect(205,y-25,590,22);ctx.fillStyle='#246bce';ctx.fillRect(205,y-25,590*r.scores[d]/15,22);ctx.font='26px Georgia,serif';ctx.fillText(r.scores[d]+'/15',835,y)});
+      ctx.fillStyle='#246bce';ctx.font='700 24px serif';ctx.fillText('最需要先突破：'+r.weak,70,845);ctx.fillStyle='#17243a';ctx.font='700 42px serif';wrap(ctx,r.diagnosis.title,70,915,920,54,2);ctx.fillStyle='#53647b';ctx.font='28px serif';wrap(ctx,r.diagnosis.text,70,1030,920,46,4);ctx.fillStyle='#246bce';ctx.font='700 27px serif';wrap(ctx,r.diagnosis.advice,70,1235,920,42,2);ctx.fillStyle='#17243a';ctx.font='700 28px serif';ctx.fillText('添加微信：灵桓（人间有庆）',70,1340);ctx.fillStyle='#66758b';ctx.font='22px serif';ctx.fillText('把这张结果卡发给我，领取进一步诊断',70,1382);
+      $('cardPreview').src=c.toDataURL('image/png');$('cardPreviewWrap').classList.remove('hidden');$('cardPreviewWrap').scrollIntoView({behavior:'smooth',block:'start'});
+    };
+    $('restartBtn').onclick=()=>{form.reset();progress();lastResult=null;$('wechatPanel').classList.add('hidden');$('cardPreviewWrap').classList.add('hidden');$('cardPreview').removeAttribute('src');$('result').classList.add('hidden');$('intro').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'})};
+    $('ctaLink').onclick=e=>{e.preventDefault();$('wechatPanel').classList.toggle('hidden');if(!$('wechatPanel').classList.contains('hidden'))$('wechatPanel').scrollIntoView({behavior:'smooth',block:'nearest'})};
+    progress();
+  })();
+  </script>
+</body>
+</html>
